@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>자기소개 페이지</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>About</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-900 text-slate-100">
+
+  <div class="min-h-screen grid grid-cols-1 md:grid-cols-4">
+
+    <!-- 사이드 영역 -->
+    <aside class="md:col-span-1 bg-gradient-to-b from-indigo-600 to-blue-500 p-8">
+      <div class="sticky top-8">
+        <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-4 border-white/30">
+          <img
+            src="https://raw.githubusercontent.com/mjjang6618-hub/picture/main/%EC%A6%9D%EB%AA%85%EC%82%AC%EC%A7%8424.11.13.jpg"
+            alt="profile"
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+        <h1 class="text-xl font-bold text-center opacity-0 translate-y-4 transition-all duration-700"
+            id="aboutTitle">
+          About Me
+        </h1>
+
+        <p class="text-sm text-center mt-2 opacity-90">
+          체육 전공 · 졸업 예정
+        </p>
+
+        <div class="mt-8 space-y-3 text-sm">
+          <p>이름: 장민준</p>
+          <p>학교: 한림대학교</p>
+          <p>학년: 3학년</p>
+          <p>전공: 체육&경영학</p>
+          <p>🏋️ 취미: 운동 & 여행</p>
+          <p>🎓 2026년 2월 졸업 예정</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="md:col-span-3 bg-slate-50 text-slate-800 p-8 md:p-14 relative">
+
+      <!-- 우측 상단 목차 -->
+      <nav class="absolute top-6 right-6 hidden md:flex gap-6 text-sm font-semibold">
+        <a href="#intro" class="text-slate-600 hover:text-blue-600">Introduce</a>
+        <a href="#timeline" class="text-slate-600 hover:text-blue-600">Timeline</a>
+        <a href="#interest" class="text-slate-600 hover:text-blue-600">Goal</a>
+      </nav>
+
+      <!-- 인트로 -->
+      <section id="intro" class="mb-20">
+        <h2 class="text-3xl font-bold mb-4">Introduce</h2>
+        <p class="leading-relaxed text-sm">
+          안녕하세요. 한림대학교 체육학과 3학년 장민준입니다. 현재 체육학을 주전공으로 하고 있으며 경영학을 복수전공으로 하고 있습니다. 2026년 2월 졸업을 앞두고 있습니다.
+        </p>
+      </section>
+
+      <!-- 타임라인 -->
+      <section id="timeline" class="mb-20">
+        <h2 class="text-2xl font-semibold mb-6">University Timeline</h2>
+
+        <div class="relative border-l-2 border-blue-400 pl-6 space-y-8 text-sm">
+          <div>
+            <span class="absolute -left-[9px] top-1 w-4 h-4 bg-blue-500 rounded-full"></span>
+            <p class="font-semibold">체육학과 진학</p>
+            <p class="text-slate-600 mt-1">
+              체육학과에 진학하여 인체 구조와 운동의 기초를 학습
+            </p>
+          </div>
+
+          <div>
+            <span class="absolute -left-[9px] top-1 w-4 h-4 bg-blue-500 rounded-full"></span>
+            <p class="font-semibold">전공 심화 학습</p>
+            <p class="text-slate-600 mt-1">
+              트레이닝, 스포츠 활동, 운동 수행 중심의 전공 수업 이수
+            </p>
+          </div>
+
+          <div>
+            <span class="absolute -left-[9px] top-1 w-4 h-4 bg-blue-500 rounded-full"></span>
+            <p class="font-semibold">졸업 준비</p>
+            <p class="text-slate-600 mt-1">
+              대학 생활을 정리하며 진로와 향후 계획을 고민
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 관심사 / 생활 -->
+      <section id="interest" class="mb-32">
+        <h2 class="text-2xl font-semibold mb-6">Goal</h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white rounded-xl p-5 shadow">
+            <h3 class="font-semibold mb-2">운동</h3>
+            <p class="text-slate-600">
+              헬스 트레이닝과 러닝을 통해 체력과 집중력을 관리
+            </p>
+          </div>
+
+          <div class="bg-white rounded-xl p-5 shadow">
+            <h3 class="font-semibold mb-2">계획</h3>
+            <p class="text-slate-600">
+             편입 또는 대학원 등으로 추가적으로 심화 학습을 해보고 싶은 생각이 있음. 
+            </p>
+          </div>
+
+          <div class="bg-white rounded-xl p-5 shadow">
+            <h3 class="font-semibold mb-2">목표</h3>
+            <p class="text-slate-600">
+              우리나라의 스포츠 산업을 발전시키는 역할을 하고 싶은 목표를 가지고 있음. 
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="text-center text-xs text-slate-500">
+        © 2026 Personal About Page
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- 등장 애니메이션 스크립트 -->
+  <script>
+    window.addEventListener("load", () => {
+      const title = document.getElementById("aboutTitle");
+      title.classList.remove("opacity-0", "translate-y-4");
+      title.classList.add("opacity-100", "translate-y-0");
+    });
+  </script>
+
+</body>
+</html>
+    <script src='https://cdn.tailwindcss.com'></script>
+  </body>
+  
+</html>
