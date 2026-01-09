@@ -1,89 +1,141 @@
-const display = document.getElementById("display");
-const keys = document.querySelector(".keys");
 
-let first = null;
-let op = null;
-let waitingSecond = false;
+<!DOCTYPE html>
+<html lang="en">
 
-function setDisplay(v) {
-  display.value = String(v);
-}
+  <head>
+    <meta charset="UTF-8">
+    <title>홈페이지 계산기</title>
+    
 
-function inputDigit(d) {
-  if (waitingSecond) {
-    setDisplay(d);
-    waitingSecond = false;
-    return;
-  }
-  const cur = display.value;
-  setDisplay(cur === "0" ? d : cur + d);
-}
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex items-center justify-center p-3 sm:p-6 bg-gray-100">
 
-function clearAll() {
-  first = null;
-  op = null;
-  waitingSecond = false;
-  setDisplay("0");
-}
+  <div class="w-full max-w-[420px] bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-5">
+    <h5 class="text-center mb-3 text-base sm:text-lg font-semibold">Calculator (Tailwind)</h5>
 
-function compute(a, operator, b) {
-  if (operator === "+") return a + b;
-  if (operator === "-") return a - b;
-  if (operator === "×") return a * b;
-  if (operator === "÷") return b === 0 ? "Error" : a / b;
-  return b;
-}
+    <input id="display" type="text" 
+      class="w-full text-right text-xl sm:text-2xl px-3 sm:px-4 py-2 sm:py-3 mb-3 rounded-lg border border-gray-300 bg-white focus:outline-none" 
+      value="0" readonly />
 
-function handleOperator(nextOp) {
-  const cur = Number(display.value);
+    <div class="keys grid grid-cols-4 gap-2 sm:gap-3">
+      <!-- 숫자 -->
+      <button class="h-10 sm:h-11 text-sm sm:text-base rounded-lg border border-gray-600 text-gray-700 hover:bg-blue-50" data-key="7">7</button>
+      <button class="h-10 sm:h-11 text-sm sm:text-base rounded-lg border border-gray-600 text-gray-700 hover:bg-blue-50" data-key="8">8</button>
+      <button class="h-10 sm:h-11 text-sm sm:text-base rounded-lg border border-gray-600 text-gray-700 hover:bg-blue-50" data-key="9">9</button>
+      <button class="h-10 sm:h-11 text-sm sm:text-base rounded-lg border border-blue-600 text-blue-600 hover:bg-blue-100" data-key="÷">÷</button>
 
-  if (first === null) {
-    first = cur;
-  } else if (op && !waitingSecond) {
-    const result = compute(first, op, cur);
-    if (result === "Error") {
-      setDisplay("Error");
+      <button class="h-10 sm:h-11 text-sm sm:text-base rounded-lg border border-gray-600 text-gray-700 hover:bg-blue-50" data-key="4">4</button>
+      <button class="h-10 sm:h-11 text-sm sm:text-base rounded-lg border border-gray-600 text-gray-700 hover:bg-blue-50" data-key="5">5</button>
+      <button class="h-10 sm:h-11 text-sm sm:text-base rounded-lg border border-gray-600 text-gray-700 hover:bg-blue-50" data-key="6">6</button>
+      <button class="h-10 sm:h-11 text-sm sm:text-base rounded-lg border border-blue-600 text-blue-600 hover:bg-blue-100" data-key="×">×</button>
+
+      <button class="h-10 sm:h-11 text-sm sm:text-base rounded-lg border border-gray-600 text-gray-700 hover:bg-blue-50" data-key="1">1</button>
+      <button class="h-10 sm:h-11 text-sm sm:text-base rounded-lg border border-gray-600 text-gray-700 hover:bg-blue-50" data-key="2">2</button>
+      <button class="h-10 sm:h-11 text-sm sm:text-base rounded-lg border border-gray-600 text-gray-700 hover:bg-blue-50" data-key="3">3</button>
+      <button class="h-10 sm:h-11 text-sm sm:text-base rounded-lg border border-blue-600 text-blue-600 hover:bg-blue-100" data-key="-">-</button>
+
+      <button class="col-span-2 h-10 sm:h-11 text-sm sm:text-base rounded-lg border border-blue-600 text-gray-700 hover:bg-blue-50" data-key="0">0</button>
+      <button class="h-10 sm:h-11 text-sm sm:text-base rounded-lg border border-blue-600 bg-yellow-400 text-gray-900 font-semibold hover:bg-yellow-500" data-key="C">C</button>
+      <button class="h-10 sm:h-11 text-sm sm:text-base rounded-lg border border-blue-600 bg-green-600 text-white font-semibold hover:bg-green-700" data-key="=">=</button>
+      <button class="h-10 sm:h-11 text-sm sm:text-base rounded-lg border border-blue-600 text-blue-600 hover:bg-blue-100" data-key="+">+</button>
+    </div>
+  </div>
+
+  <script>
+    const display = document.getElementById("display");
+    const keys = document.querySelector(".keys");
+
+    let first = null;
+    let op = null;
+    let waitingSecond = false;
+
+    function setDisplay(v) { display.value = String(v); }
+
+    function inputDigit(d) {
+      if (waitingSecond) {
+        setDisplay(d);
+        waitingSecond = false;
+        return;
+      }
+      const cur = display.value;
+      setDisplay(cur === "0" ? d : cur + d);
+    }
+
+    function clearAll() {
       first = null;
       op = null;
-      waitingSecond = true;
-      return;
+      waitingSecond = false;
+      setDisplay("0");
     }
-    first = result;
-    setDisplay(result);
-  }
 
-  op = nextOp;
-  waitingSecond = true;
-}
+    function compute(a, operator, b) {
+      if (operator === "+") return a + b;
+      if (operator === "-") return a - b;
+      if (operator === "×") return a * b;
+      if (operator === "÷") return b === 0 ? "Error" : a / b;
+      return b;
+    }
 
-function doEqual() {
-  if (op === null || first === null) return;
-  const cur = Number(display.value);
+    function handleOperator(nextOp) {
+      const cur = Number(display.value);
+      if (first === null) { first = cur; }
+      else if (op && !waitingSecond) {
+        const result = compute(first, op, cur);
+        if (result === "Error") {
+          setDisplay("Error");
+          first = null;
+          op = null;
+          waitingSecond = true;
+          return;
+        }
+        first = result;
+        setDisplay(result);
+      }
+      op = nextOp;
+      waitingSecond = true;
+    }
 
-  const result = compute(first, op, cur);
-  if (result === "Error") {
-    setDisplay("Error");
-    first = null;
-    op = null;
-    waitingSecond = true;
-    return;
-  }
+    function doEqual() {
+      if (op === null || first === null) return;
+      const cur = Number(display.value);
+      const result = compute(first, op, cur);
+      if (result === "Error") {
+        setDisplay("Error");
+        first = null;
+        op = null;
+        waitingSecond = true;
+        return;
+      }
+      setDisplay(result);
+      first = result;
+      waitingSecond = true;
+    }
 
-  setDisplay(result);
-  first = result;
-  waitingSecond = true;
-}
+    keys.addEventListener("click", (e) => {
+      const btn = e.target.closest("button");
+      if (!btn) return;
+      const key = btn.dataset.key;
+      if (key >= "0" && key <= "9") inputDigit(key);
+      else if (key === "C") clearAll();
+      else if (key === "=") doEqual();
+      else if (key === "+" || key === "-" || key === "×" || key === "÷") handleOperator(key);
+    });
 
-keys.addEventListener("click", (e) => {
-  const btn = e.target.closest("button");
-  if (!btn) return;
+    clearAll();
+  </script>
 
-  const key = btn.dataset.key;
-
-  if (key >= "0" && key <= "9") inputDigit(key);
-  else if (key === "C") clearAll();
-  else if (key === "=") doEqual();
-  else if (key === "+" || key === "-" || key === "×" || key === "÷") handleOperator(key);
-});
-
-clearAll();
+</body>
+</html>
+    
+  </body>
+  
+</html>
